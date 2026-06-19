@@ -25,13 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: 'recursive' # Forces GitHub to download the theme files completely
           fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.140.0'
+          hugo-version: '0.146.0' # Bumped version to satisfy PaperMod requirements
           extended: true
 
       - name: Setup Pages
