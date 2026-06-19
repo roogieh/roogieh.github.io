@@ -3,7 +3,7 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches:
-      - main  # or master, depending on your default branch name
+      - main
 
 permissions:
   contents: read
@@ -21,22 +21,23 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.140.0 # Adjust to match your local version if needed
     steps:
-      - name: Setup Hugo
-          uses: peaceiris/actions-hugo@v3
-          with:
-            hugo-version: '0.140.0'
-            extended: true         
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.140.0'
+          extended: true
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+
       - name: Build with Hugo
         env:
           HUGO_ENV: production
@@ -45,6 +46,7 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
