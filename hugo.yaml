@@ -1,4 +1,4 @@
-baseURL: https://roogieh.github.io/roogieh.github.io/
+baseURL: "https://roogieh.github.io/"
 locale: en-us
 title: Roger He
 theme: ["PaperMod"]
