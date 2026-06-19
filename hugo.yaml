@@ -1,0 +1,16 @@
+baseURL: https://example.org/
+locale: en-us
+title: My New Hugo Project
+theme: ["PaperMod"]
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+params:
+  homeInfoParams:
+    Title: "Roogieh's Math & Physics Blog"
+    Content: "Welcome to my digital garden where I explore mathematics, quantum systems, and network optimization."
+
+  # This setting forces the homepage to list your recent posts
+  profileMode:
+    enabled: false
