@@ -1,6 +1,6 @@
 baseURL: https://example.org/
 locale: en-us
-title: Math Explainers
+title: Roger He
 theme: ["PaperMod"]
 markup:
   goldmark:
@@ -8,8 +8,8 @@ markup:
       unsafe: true
 params:
   homeInfoParams:
-    Title: "Roger's Math Explainers"
-    Content: "Check out my exposition on various math topics, including geometry, topology, and more!"
+    Title: "Math Explainers"
+    Content: "Check out my exposition on various math/physics topics, including geometry, topology, and more!"
 
   # This setting forces the homepage to list your recent posts
   profileMode:
