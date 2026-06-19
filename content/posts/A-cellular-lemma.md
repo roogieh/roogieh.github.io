@@ -5,7 +5,7 @@ draft: false
 tags: ["Algebraic Topology", "CW Complexes", "Homology"]
 ---
 
-{{< figure src="cellulardegreediagram.png" title="An unholy diagram" align="center" >}}
+{{< figure src="/images/cellulardegreediagram.png" title="An unholy diagram" align="center" >}}
 
 Today we're gonna take a look at this diagram. What can we prove from it?
 
@@ -17,7 +17,7 @@ where $d_{\alpha\beta}$ is the degree of the map $S_\alpha^{n-1} \to X^{n-1} \to
 
 Even more confusing. Let's break it down. 
 
-{{< figure src="cellularhomology.png" align="center" >}}
+![](/images/cellularhomology.png#center)
 
 This is the diagram for cellular homology; the central line consists of the chain groups, the $d_n$ forming the boundary maps (homology of homology!). It is a known theorem that cellular homology groups match the singular homology groups for cell complexes, and so cellular homology is often a useful tool for computing singular homology. 
 
@@ -42,7 +42,6 @@ $$
 for the $n$-cells indexed by $\alpha$ and for $n>0$. The case $n = 0$ is left as an exercise.
 
 We want to see what $d_n$ does, so we see what it does on a single cell: $e_{\alpha}^n$.
-
 
 
 
