@@ -6,6 +6,7 @@ tags: ["Algebraic Topology", "CW Complexes", "Homology"]
 ---
 
 {{< figure src="/images/cellulardegreediagram.png" title="An unholy diagram" align="center" >}}
+In general, I recommend split screening math with itself so you can have diagrams side-by-side with text. I recommend that here. 
 
 Today we're gonna take a look at this diagram. What can we prove from it?
 
@@ -15,9 +16,11 @@ It all comes down to this formula.
 
 where $d_{\alpha\beta}$ is the degree of the map $S_\alpha^{n-1} \to X^{n-1} \to S_\beta^{n-1}$ that is the composition of the attaching map of $e_\alpha^n$ with the quotient map collapsing $X^{n-1} - e_\beta^{n-1}$ to a point.
 
-Even more confusing. Let's break it down. 
+Even more confusing. Let's break it down.
 
-![](/images/cellularhomology.png#center)
+## Building an Intuition for the Cellular Boundary Formula
+
+![Cellular Homology](/images/cellularhomology.png#center)
 
 This is the diagram for cellular homology; the central line consists of the chain groups, the $d_n$ forming the boundary maps (homology of homology!). It is a known theorem that cellular homology groups match the singular homology groups for cell complexes, and so cellular homology is often a useful tool for computing singular homology. 
 
@@ -42,8 +45,69 @@ $$
 for the $n$-cells indexed by $\alpha$ and for $n>0$. The case $n = 0$ is left as an exercise.
 
 We want to see what $d_n$ does, so we see what it does on a single cell: $e_{\alpha}^n$.
+Since $d_n$ takes $H_{n}(X^{n}, X^{n-1})$ to $H_{n-1}(X^{n-1}, X^{n-2})$, by the above characterization of these relative homology groups, $d_n$ will take $e_{\alpha}^n$ to some integer combination of $n-1$ cells 
 
+$$d_n(e_\alpha^n) = \sum_\beta c_{\alpha\beta} e_\beta^{n-1}$$ where $c_{\alpha\beta}$ are the coefficients, and $e_\beta^{n-1}$ represent the $n-1$ cells of $X$.
 
+Let's look at an example to get an intuition for what should happen. Say we have a figure eight; one $0$-cell and two $1$-cells. I want to attach a 2-cell, $e^2$, to our figure eight. So, we construct our attaching map $\varphi$. Visualize starting at the rightmost point of the circle, $p_0$, tracing counterclockwise. Let $\varphi(p_0)$ = the centrepoint of the figure eight.
 
+As we trace around, imagine $\varphi$ tracing around the top circle clockwise, the bottom circle three times counterclockwise, and then top circle counterclockwise twice. We will be using the convention that counterclockwise around either of the circles is positive, clockwise negative. Let the top circle be $e^1_1$, and the bottom be $e^1_2$.
 
+Let's now analyze what happens with $d_n$. Looking to the cellular homology diagram, we see that $d_n$ is the composition of two maps. Begin by creating your representative for $e^2$'s homology class, some map of a triangle such that the boundary maps the boundary of the cell and the interiors map onto each other. 
 
+Notice that it does not matter where you define the vertices of the triangle to be on the cell boundary; think of assigning vertices as triangulating the boundary with 1-simplices. The equivalence of simplicial with singular homology tells us that no matter how we triangulate the boundary, the underlying singular homology will be the same. So in our particular example we will be picking the vertices of the triangle to be $p_0$, the point on the boundary where $\varphi$ completes the first loop around the top circle of the figure eight ($p_1$), and the point on the boundary after $\varphi$ has completed four circular loops of the six total ($p_2$).
+
+One can imagine the first map, $\partial _{2}$, as taking the boundary of the simplex, cancelling any terms if needed, and taking the homology class, $[c]$ of the remaining edges, $c$ in the 1-skeleton. In our example there is no cancellation, and so $c = E_2 - E_1 + E_0$ with $E_2$ being the edge between $p_0$ and $p_1$, $E_1$ between $p_0$ and $p_2$, and $E_0$ between $p_1$ and $p_2$. 
+
+The second map, $j_1$, can be viewed as taking the 1-cells and turning them into loops so we can count how many times each one has been looped around. By going from $H_1(X^1)$ to $H_1(X^1, X^0)$, recalling that $H_n(X, A) \cong \widetilde{H}_n(X/A) \cong H_n(X/A)$ for $n>0$ and good pairs $(X, A)$, and that CW-complex pairs are good, we can visualize the transition as gluing all the endpoints of the 1-cells together such that we again have a bouquet of circles as computed in 
+<div style="text-align: center;">
+$$
+H_{n}(X^{n}, X^{n-1}) \cong \widetilde{H}_{n}(X^{n}/X^{n-1}) \cong \widetilde{H}_{n}\left(\bigvee_{\alpha} S^{n}_\alpha\right) \cong \bigoplus_{\alpha} \mathbb{Z} \cong \mathbb{Z}^{\text{\# of }n\text{-cells}}.
+$$
+</div>
+
+In our particular example, this map actually doesn't do anything because our 0-skeleton is already a single point. However, from a conceptual standpoint we see that 
+$$
+[c] = [E_2] - [E_1] + [E_0]
+$$ 
+gets mapped to 
+$$
+-e_1^1 - 3e_2^1 + 2e_1^1 = e_1^1 - 3e_2^1.
+$$ 
+Thus, $d_2(e^2) = e_1^1 - 3e_2^1$.
+Essentially, we took the "winding numbers" of the 2-cell's boundary map around each of the 1-cells, or the net number of times we traversed the 1-cells according to our sign convention. This is what $d_n$ does; it takes your $n$-cell, records "the net number of times its boundary covers each one of the $n-1$ cells," also called the degree $d_{\alpha\beta}$, and these are the coefficients in the cellular boundary formula 
+$$d_n(e_\alpha^n) = \sum_\beta d_{\alpha\beta} e_\beta^{n-1}.$$
+
+## Handwaving the formula's proof from the Diagram
+{{< figure src="/images/cellulardegreediagram.png" title="The diagram again, for convenience" align="center" >}}
+We'll now follow the intuition behind what this diagram does to prove the cellular boundary formula.
+
+Recall that our choice of $n$-cell was called $e^n_{\alpha}$. In $H_n(X^n, X^{n-1})$, the cell generates the factor of $\mathbb{Z}$ that corresponds with it (again, recall the bouquet of spheres!).
+In the top left of the diagram, we see $H_n(D^n_{\alpha}, \partial D^n_{\alpha}) \cong \mathbb{Z}$. This is just the factor of $\mathbb{Z}$, the sphere in the bouquet that corresponds to $e^n_{\alpha}$. The map $\Phi_{\alpha \ast}$, induced by the characteristic map of our cell, thus maps the generator of $H_n(D^n_{\alpha}, \partial D^n_{\alpha})$ to $e^n_{\alpha}$, the generator of its $\mathbb{Z}$ factor in $H_n(X^n, X^{n-1})$. From there we map $e^n_{\alpha}$ to its image through $d_n$. 
+
+Going another path to the same destination, we can start from the top left once again and go right, to the disk's boundary. But the structure emerges from the map $\varphi_{\alpha \ast}$. This is induced by the attaching map on $e^n_{\alpha}$'s boundary. This map tells us what the boundary of $e^n_{\alpha}$ looks like. $q_{\ast}$ represents the second map discussed in our figure eight example; it glues the entire $n-2$ skeleton together, turning the $n-1$ cells into $n-1$ spheres and counting how many times $e^n_{\alpha}$'s boundary "loops" or "covers" the $n - 1$ cells. 
+Using our figure eight example, after following our path from $H_2(D^2_{\alpha}, \partial D^2_{\alpha})$ 
+to $\widetilde{H}_{1}(X^{1}, X^{0})$, we end up with 
+$$
+-e_1^1 - 3e_2^1 + 2e_1^1 = e_1^1 - 3e_2^1.
+$$
+The two equivalences then bring us back to $d_{n}(e^n_{\alpha})$. The map $q_{\beta \ast}$ 
+projects our image from $\widetilde{H}_{n-1}(X^{n-1}, X^{n-2})$ down to each of the 
+individual $n-1$ cells and their coefficients. For example, 
+$$
+q_{2 \ast}(e_1^1 - 3e_2^1) = -3e_2^1.
+$$ 
+One can then see that the coefficients $c_{\alpha \beta}$ of the $e_{\beta}^{n-1}$ in the formula 
+$$
+d_n(e_\alpha^n) = \sum_\beta c_{\alpha \beta} e_\beta^{n-1}
+$$
+are the same as the coefficients projected by $q_{\beta \ast}$. 
+
+Since 
+$$
+\widetilde{H}_{n-1}(\partial D^{n}_{\alpha}) \cong \widetilde{H}_{n-1}(S^{n-1}_{\beta}) \cong \mathbb{Z}
+$$ 
+and $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$, 
+the coefficients $c_{\alpha \beta}$ are also equivalent to $d_{\alpha \beta} = \deg(\Delta_{\alpha \beta \ast})$ 
+since $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$ 
+is the map defined in the cellular boundary formula statement.
