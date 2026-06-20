@@ -79,35 +79,27 @@ Essentially, we took the "winding numbers" of the 2-cell's boundary map around e
 $$d_n(e_\alpha^n) = \sum_\beta d_{\alpha\beta} e_\beta^{n-1}.$$
 
 ## Handwaving the formula's proof from the Diagram
-{{< figure src="/images/cellulardegreediagram.png" title="The diagram again, for convenience" align="center" >}}
+{{< figure src="/images/cellulardegreediagram.png" title="The commutative diagram again, for convenience" align="center" >}}
 We'll now follow the intuition behind what this diagram does to prove the cellular boundary formula.
 
 Recall that our choice of $n$-cell was called $e^n_{\alpha}$. In $H_n(X^n, X^{n-1})$, the cell generates the factor of $\mathbb{Z}$ that corresponds with it (again, recall the bouquet of spheres!).
 In the top left of the diagram, we see $H_n(D^n_{\alpha}, \partial D^n_{\alpha}) \cong \mathbb{Z}$. This is just the factor of $\mathbb{Z}$, the sphere in the bouquet that corresponds to $e^n_{\alpha}$. The map $\Phi_{\alpha \ast}$, induced by the characteristic map of our cell, thus maps the generator of $H_n(D^n_{\alpha}, \partial D^n_{\alpha})$ to $e^n_{\alpha}$, the generator of its $\mathbb{Z}$ factor in $H_n(X^n, X^{n-1})$. From there we map $e^n_{\alpha}$ to its image through $d_n$. 
 
 Going another path to the same destination, we can start from the top left once again and go right, to the disk's boundary. But the structure emerges from the map $\varphi_{\alpha \ast}$. This is induced by the attaching map on $e^n_{\alpha}$'s boundary. This map tells us what the boundary of $e^n_{\alpha}$ looks like. $q_{\ast}$ represents the second map discussed in our figure eight example; it glues the entire $n-2$ skeleton together, turning the $n-1$ cells into $n-1$ spheres and counting how many times $e^n_{\alpha}$'s boundary "loops" or "covers" the $n - 1$ cells. 
-Using our figure eight example, after following our path from $H_2(D^2_{\alpha}, \partial D^2_{\alpha})$ 
-to $\widetilde{H}_{1}(X^{1}, X^{0})$, we end up with 
-$$
--e_1^1 - 3e_2^1 + 2e_1^1 = e_1^1 - 3e_2^1.
-$$
-The two equivalences then bring us back to $d_{n}(e^n_{\alpha})$. The map $q_{\beta \ast}$ 
-projects our image from $\widetilde{H}_{n-1}(X^{n-1}, X^{n-2})$ down to each of the 
-individual $n-1$ cells and their coefficients. For example, 
-$$
-q_{2 \ast}(e_1^1 - 3e_2^1) = -3e_2^1.
-$$ 
-One can then see that the coefficients $c_{\alpha \beta}$ of the $e_{\beta}^{n-1}$ in the formula 
-$$
-d_n(e_\alpha^n) = \sum_\beta c_{\alpha \beta} e_\beta^{n-1}
-$$
-are the same as the coefficients projected by $q_{\beta \ast}$. 
+Using our figure eight example, after following our path from $H_2(D^2_{\alpha}, \partial D^2_{\alpha})$ to $\widetilde{H}_{1}(X^{1}, X^{0})$, we end up with $-e_1^1 - 3e_2^1 + 2e_1^1 = e_1^1 - 3e_2^1$.
+
+The two equivalences then bring us back to $d\_{n}(e^n\_{\alpha})$. The map $q\_{\beta \ast}$ projects our image from $\widetilde{H}\_{n-1}(X^{n-1}, X^{n-2})$ down to each of the individual $n-1$ cells and their coefficients. For example, $q\_{2 \ast}(e\_1^1 - 3e\_2^1) = -3e\_2^1$. One can then see that the coefficients $c\_{\alpha \beta}$ of the $e\_{\beta}^{n-1}$ in the formula
+
+<div>
+$$d_n(e_\alpha^n) = \sum_\beta c_{\alpha \beta} e_\beta^{n-1}$$
+</div>
+
+are the same as the coefficients projected by $q_{\beta \ast}$.
 
 Since 
-$$
-\widetilde{H}_{n-1}(\partial D^{n}_{\alpha}) \cong \widetilde{H}_{n-1}(S^{n-1}_{\beta}) \cong \mathbb{Z}
-$$ 
-and $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$, 
-the coefficients $c_{\alpha \beta}$ are also equivalent to $d_{\alpha \beta} = \deg(\Delta_{\alpha \beta \ast})$ 
-since $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$ 
-is the map defined in the cellular boundary formula statement.
+
+<div>
+$$\widetilde{H}_{n-1}(\partial D^{n}_{\alpha}) \cong \widetilde{H}_{n-1}(S^{n-1}_{\beta}) \cong \mathbb{Z}$$
+</div>
+
+and $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$, the coefficients $c_{\alpha \beta}$ are also equivalent to $d_{\alpha \beta} = \deg(\Delta_{\alpha \beta \ast})$ since $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$ is the map defined in the cellular boundary formula statement.
