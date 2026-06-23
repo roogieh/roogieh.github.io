@@ -3,15 +3,33 @@ canonifyURLs: true
 locale: en-us
 title: Roger He
 theme: ["PaperMod"]
+
 markup:
   goldmark:
     renderer:
       unsafe: true
+
+# 1. Define your top-right navigation menu here
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Expositions"
+      url: "/posts/"
+      weight: 2
+    - name: "Research"
+      url: "/research/"
+      weight: 3
+    - name: "About Me"
+      url: "/about/"
+      weight: 4
+
 params:
+  # 2. To make homeInfoParams work correctly, profileMode must be explicitly disabled
+  profileMode:
+    enabled: false
+
   homeInfoParams:
     Title: "Math Explainers"
     Content: "Check out my exposition on various math/physics topics, including geometry, topology, and more!"
-
-  # This setting forces the homepage to list your recent posts
-  profileMode:
-    enabled: false

@@ -1,12 +1,12 @@
 ---
-title: "Demystifying a disgusting diagram"
+title: "Mildly Scary Diagram"
 date: 2026-06-19
 draft: false
 tags: ["Algebraic Topology", "CW Complexes", "Homology"]
 ---
 
-{{< figure src="/images/cellulardegreediagram.png" title="An unholy diagram" align="center" >}}
-In general, I recommend split screening math with itself so you can have diagrams side-by-side with text. I recommend that here. 
+{{< figure src="/images/cellulardegreediagram.png" title="Mildly unholy diagram" align="center" >}}
+In general, I recommend split screening math websites with themselves to mitigate scrolling back and forth. I recommend that here. 
 
 Today we're gonna take a look at this diagram. What can we prove from it?
 
@@ -102,4 +102,4 @@ Since
 $$\widetilde{H}_{n-1}(\partial D^{n}_{\alpha}) \cong \widetilde{H}_{n-1}(S^{n-1}_{\beta}) \cong \mathbb{Z}$$
 </div>
 
-and $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$, the coefficients $c_{\alpha \beta}$ are also equivalent to $d_{\alpha \beta} = \deg(\Delta_{\alpha \beta \ast})$ since $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$ is the map defined in the cellular boundary formula statement.
+and $\Delta_{\alpha \beta \ast} = q_{\beta \ast} \circ q_{\ast} \circ \varphi_{\alpha \ast}$, the coefficients $c_{\alpha \beta}$ are also equivalent to $d_{\alpha \beta} = \deg(\Delta_{\alpha \beta})$ since $\Delta_{\alpha \beta} = q_{\beta} \circ q \circ \varphi_{\alpha}$ is the map defined in the cellular boundary formula statement.
